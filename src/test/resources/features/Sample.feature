@@ -64,6 +64,7 @@ Scenario Outline: Agregar workspace
   And set values <nombreWorkspace> of keys name in body jsons/bodies/PracticaClase.json
   When execute method POST
   Then the status code should be 201
+  And response should be name = Lippia
 
   Examples:
   | nombreWorkspace |
