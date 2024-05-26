@@ -56,6 +56,7 @@ Feature: Sample
       | doggie |
 
 @practicaClase
+  ##NO ME ESTA FUNCIONANDO
 Scenario Outline: Agregar workspace
   Given base url https://api.clockify.me/api
   And endpoint /v1/workspaces
@@ -77,7 +78,39 @@ Scenario: Obtener Workspace
   And header x-api-key = NjBhNjU4MGUtMDI0Zi00M2EwLWEyNTgtYmE4NTcwMWY1YWQ5
   When execute method GET
   Then the status code should be 200
-  And response should be [0].name = Agregar Workspace
-  * define espacioDeTrabajo = response[0].id
+  And response should be [1].name = Agregar Workspace Prueba
+  * define espacioDeTrabajo = response[1].id
 
+@practicaClase3
+Scenario: Obtener clientes de un Workspace
+  Given base url https://api.clockify.me/api
+  And endpoint /v1/workspaces
+  And header x-api-key = NjBhNjU4MGUtMDI0Zi00M2EwLWEyNTgtYmE4NTcwMWY1YWQ5
+  And execute method GET
+  And the status code should be 200
+  And response should be [1].name = Agregar Workspace Prueba
+  * define espacioDeTrabajo = response[1].id
+  And base url https://api.clockify.me/api
+  And endpoint /v1/workspaces/{{espacioDeTrabajo}}/clients
+  And header x-api-key = NjBhNjU4MGUtMDI0Zi00M2EwLWEyNTgtYmE4NTcwMWY1YWQ5
+  When execute method GET
+  Then the status code should be 200
+
+  @practicaClase4
+  Scenario: Obtener clientes de un Workspace con CALL
+    Given call Sample.feature@practicaClase2
+    And base url $(env.base_url)
+    And endpoint /v1/workspaces/{{espacioDeTrabajo}}/clients
+    And header x-api-key = $(env.x_api_key)
+    ##CONSULTAR POR QUÉ NO FUNCIONA LA API KEY
+    When execute method GET
+    Then the status code should be 200
+
+  @practicaClase5
+  Scenario: Eliminar Cliente
+    Given base url $(env.base_url)
+    And endpoint /v1/workspaces/664c098f7d59624baae8205e/clients/665375f115b9d0645951c48c
+    And header x-api-key = $(env.x_api_key)
+    When execute method DELETE
+    Then the status code should be 200
   
