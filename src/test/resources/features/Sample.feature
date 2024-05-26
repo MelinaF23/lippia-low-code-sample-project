@@ -55,6 +55,28 @@ Feature: Sample
       | name   |
       | doggie |
 
-      
+@practicaClase
+Scenario Outline: Agregar workspace
+  Given base url https://api.clockify.me/api
+  And endpoint /v1/workspaces
+  And header Content-Type = application/json
+  And header x-api-key = NjBhNjU4MGUtMDI0Zi00M2EwLWEyNTgtYmE4NTcwMWY1YWQ5
+  And set values <nombreWorkspace> of keys name in body jsons/bodies/PracticaClase.json
+  When execute method POST
+  Then the status code should be 201
+
+  Examples:
+  | nombreWorkspace |
+  | Lippia          |
+
+@practicaClase2
+Scenario: Obtener Workspace
+  Given base url https://api.clockify.me/api
+  And endpoint /v1/workspaces
+  And header x-api-key = NjBhNjU4MGUtMDI0Zi00M2EwLWEyNTgtYmE4NTcwMWY1YWQ5
+  When execute method GET
+  Then the status code should be 200
+  And response should be [0].name = Agregar Workspace
+  * define espacioDeTrabajo = response[0].id
 
   
