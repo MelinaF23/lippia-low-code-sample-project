@@ -7,9 +7,10 @@ Feature: Project
 
   @addaNewProject
   Scenario: Crear un proyecto dentro del workspace exitosamente
-    And endpoint /v1/workspaces/664c098f7d59624baae8205e/projects
+    * define WSID = 664c098f7d59624baae8205e
+    And endpoint /v1/workspaces/{{WSID}}/projects
     And header Content-Type = application/json
-    And set value "Eliminar 4" of key name in body jsons/bodies/AddProject.json
+    And set value "Hamburguesa" of key name in body jsons/bodies/AddProject.json
     When execute method POST
     Then the status code should be 201
 
@@ -32,7 +33,7 @@ Feature: Project
     Then the status code should be 200
     And response should be public = false
 
-  @findProjectById
+
   Scenario: Consultar un proyecto por su ID exitosamente
     And endpoint /v1/workspaces/664c098f7d59624baae8205e/projects/664c0e50f0024241f5c9968c
     When execute method GET

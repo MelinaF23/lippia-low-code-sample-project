@@ -55,14 +55,15 @@ Feature: Sample
       | name   |
       | doggie |
 
+##########################################################################################################################
+
 @practicaClase
-  ##NO ME ESTA FUNCIONANDO
 Scenario Outline: Agregar workspace
   Given base url https://api.clockify.me/api
   And endpoint /v1/workspaces
   And header Content-Type = application/json
   And header x-api-key = NjBhNjU4MGUtMDI0Zi00M2EwLWEyNTgtYmE4NTcwMWY1YWQ5
-  And set values <nombreWorkspace> of keys name in body jsons/bodies/PracticaClase.json
+  And set value <nombreWorkspace> of key name in body jsons/bodies/PracticaClase.json
   When execute method POST
   Then the status code should be 201
   And response should be name = Lippia
