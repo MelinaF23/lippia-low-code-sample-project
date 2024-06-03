@@ -103,7 +103,6 @@ Scenario: Obtener clientes de un Workspace
     And base url $(env.base_url)
     And endpoint /v1/workspaces/{{espacioDeTrabajo}}/clients
     And header x-api-key = $(env.x_api_key)
-    ##CONSULTAR POR QUÉ NO FUNCIONA LA API KEY
     When execute method GET
     Then the status code should be 200
 
