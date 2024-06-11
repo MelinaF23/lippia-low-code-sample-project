@@ -29,8 +29,8 @@ Feature: Manejo de horas de un proyecto
     * define id = response.id
 
     Examples:
-      | name | namespace | value      | description     | end                  | projectId                | start                |  |  |
-      | QA   | user_info | Estudiante | TPAcademy2024.4 | 2024-06-10T09:00:00Z | 664c0e50f0024241f5c9968c | 2024-06-10T06:00:00Z |  |  |
+      | name | namespace | value      | description      | end                  | projectId                | start                |  |  |
+      | QA   | user_info | Estudiante | TPAcademy2024.11 | 2024-06-10T09:00:00Z | 664c0e50f0024241f5c9968c | 2024-06-10T06:00:00Z |  |  |
 
   @updateTimeEntryOnWorkspace
   Scenario Outline: Editar campo description de un registro exitosamente
