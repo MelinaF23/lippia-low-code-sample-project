@@ -1,0 +1,13 @@
+{
+  "customAttributes": [
+    {
+      "name": "String",
+      "namespace": "String",
+      "value": "String"
+    }
+  ],
+  "description": "<description>",
+  "end": "<end>",
+  "projectId": "<projectId>",
+  "start": "<start>"
+}
